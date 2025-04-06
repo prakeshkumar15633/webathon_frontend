@@ -19,7 +19,7 @@ const Attendance = () => {
   useEffect(() => {
     const fetchAttendance = async () => {
       try {
-        const res = await axios.get('http://localhost:4000/attendance-api/report/student1@example.com');
+        const res = await axios.get('https://shms-backend-zvyd.onrender.com/attendance-api/report/student1@example.com');
         const data = res.data;
         setAttendance(data);
         setLoading(false);

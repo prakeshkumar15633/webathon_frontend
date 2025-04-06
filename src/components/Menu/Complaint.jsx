@@ -30,7 +30,7 @@ const Complaint = () => {
                 setFormData(complaintData);
                 console.log(complaintData);  
 
-                let res = await axios.post('http://localhost:4000/user-api/complaints', complaintData);
+                let res = await axios.post('https://shms-backend-zvyd.onrender.com/user-api/complaints', complaintData);
                 alert('Complaint submitted successfully');
             } else {
                 throw new Error('User or room information is missing');

@@ -27,7 +27,7 @@ function Signup({ fun }) {
         newUser.paymentBalance = 0
         newUser.paymentStatus = true
         console.log(newUser)
-        const res = await axios.post('http://localhost:4000/user-api/user', newUser);
+        const res = await axios.post('https://shms-backend-zvyd.onrender.com/user-api/user', newUser);
         if (res.data.message === "User created") {
             console.log(res.data.message)
         } else {

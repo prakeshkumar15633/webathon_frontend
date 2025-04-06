@@ -22,7 +22,7 @@ function LeaveRequest() {
     e.preventDefault();
     console.log(formData)
     try {
-      const response = await fetch('http://localhost:4000/leave-api/leaveRequests', {
+      const response = await fetch('https://shms-backend-zvyd.onrender.com/leave-api/leaveRequests', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

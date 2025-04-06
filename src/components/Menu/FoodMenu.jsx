@@ -27,7 +27,7 @@ const FoodMenu = () => {
             formData.taste = parseInt(formData.taste);
             formData.quality = parseInt(formData.quality);
             console.log(formData);
-            let res = await axios.post('http://localhost:4000/user-api/feedback', formData);
+            let res = await axios.post('https://shms-backend-zvyd.onrender.com/user-api/feedback', formData);
             console.log(res.data);
         } catch (err) {
             console.error(err);
@@ -40,7 +40,7 @@ const FoodMenu = () => {
     const [currentDay, setCurrentDay] = useState('');
 
     async function getData() {
-        let res = await axios.get('http://localhost:4000/admin-api/feedback');
+        let res = await axios.get('https://shms-backend-zvyd.onrender.com/admin-api/feedback');
         console.log(res.data);
         setFeedbackData(res.data.feedback);
     }

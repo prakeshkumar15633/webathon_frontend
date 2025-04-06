@@ -14,7 +14,7 @@ function RoomBooking() {
     async function fetchRooms(data) {
         // Adding email to the form data from localStorage
         data.email = JSON.parse(localStorage.getItem("user")).email;
-        let res = await axios.post('http://localhost:4000/rooms-api/getRooms', data);
+        let res = await axios.post('https://shms-backend-zvyd.onrender.com/rooms-api/getRooms', data);
         if (res.data.message === "Rooms found successfully.") {
             setRooms(res.data.matchedRooms);
         } else {
@@ -34,7 +34,7 @@ function RoomBooking() {
         };
 
         // Making the booking API call
-        let res = await axios.post('http://localhost:4000/rooms-api/bookRooms', roomSent);
+        let res = await axios.post('https://shms-backend-zvyd.onrender.com/rooms-api/bookRooms', roomSent);
         setMessage(res.data.message); // Setting the message based on booking response
     };
 

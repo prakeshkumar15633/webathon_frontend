@@ -10,7 +10,7 @@ function AdminApproval(){
 
   const fetchLeaveRequests = async () => {
     try {
-      const response = await fetch('http://localhost:4000/leave-api/leaveRequests');
+      const response = await fetch('https://shms-backend-zvyd.onrender.com/leave-api/leaveRequests');
       const data = await response.json();
       setLeaveRequests(data.leaveRequests || []);
     } catch (err) {
@@ -21,7 +21,7 @@ function AdminApproval(){
 
   const updateApproval = async (email, checkOutDate, decision) => {
     try {
-      const response = await fetch('http://localhost:4000/leave-api/approve', {
+      const response = await fetch('https://shms-backend-zvyd.onrender.com/leave-api/approve', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, checkOutDate, decision }),

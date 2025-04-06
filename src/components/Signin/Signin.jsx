@@ -44,7 +44,7 @@ function Signin() {
         //     paymentStatus: true
         // }
         if (user.role == "user") {
-            const res = await axios.post('http://localhost:4000/user-api/login', user);
+            const res = await axios.post('https://shms-backend-zvyd.onrender.com/user-api/login', user);
             if (res.data.message === "Login successful") {
                 localStorage.setItem("user", JSON.stringify(res.data.payload));
                 localStorage.setItem("token", JSON.stringify(res.data.token));
@@ -54,23 +54,12 @@ function Signin() {
                 setErr(res.data.message);
             }
         }
-        else if(user.role == "admin"){
-            const res = await axios.post('http://localhost:4000/admin-api/login', user);
+        else{
+            const res = await axios.post('https://shms-backend-zvyd.onrender.com/admin-api/login', user);
             if (res.data.message === "Login successful") {
                 localStorage.setItem("user", JSON.stringify(res.data.payload));
                 localStorage.setItem("token", JSON.stringify(res.data.token));
                 localStorage.setItem("userType", "admin");
-                navigate('/user-profile')
-            } else {
-                setErr(res.data.message);
-            }
-        }
-        else{
-            const res = await axios.post('http://localhost:4000/security-api/login', user);
-            if (res.data.message === "Login successful") {
-                localStorage.setItem("user", JSON.stringify(res.data.payload));
-                localStorage.setItem("token", JSON.stringify(res.data.token));
-                localStorage.setItem("userType", "security");
                 navigate('/user-profile')
             } else {
                 setErr(res.data.message);
@@ -93,7 +82,6 @@ function Signin() {
                     >
                         <option value="">-- Select Role --</option>
                         <option value="user">User</option>
-                        <option value="security">Security</option>
                         <option value="admin">Admin</option>
                     </select>
                     {errors.role?.type === "required" && (
