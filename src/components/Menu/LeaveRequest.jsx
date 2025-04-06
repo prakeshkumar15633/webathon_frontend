@@ -20,6 +20,7 @@ function LeaveRequest() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    formData.email=JSON.parse(localStorage.getItem('user')).email
     console.log(formData)
     try {
       const response = await fetch('https://shms-backend-zvyd.onrender.com/leave-api/leaveRequests', {

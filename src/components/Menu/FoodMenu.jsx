@@ -22,7 +22,7 @@ const FoodMenu = () => {
     async function handleSubmit(e) {
         e.preventDefault();
         try {
-            setFormData({...formData, date: new Date().toLocaleDateString('en-GB').split('/').join(':')});
+            setFormData({ ...formData, date: new Date().toLocaleDateString('en-GB').split('/').join(':') });
             formData.hygiene = parseInt(formData.hygiene);
             formData.taste = parseInt(formData.taste);
             formData.quality = parseInt(formData.quality);
@@ -88,14 +88,14 @@ const FoodMenu = () => {
                     Main: "Rice, Dal, Sambar",
                     Curry: "Bottle Gourd Curry, Cauliflower Curry, Carrot Peas Masala",
                     Sambar: "Brinjal Sambar"
-                }, 
+                },
                 Snacks: {
                     Item: "Pakora",
                     Beverage: "Tea, Coffee"
                 },
                 Dinner: {
                     Main: "Rice, Sambar ",
-                   Curry: ", Chicken, Paneer Masala",
+                    Curry: ", Chicken, Paneer Masala",
                     Pickle: " Amla Pickle"
                 }
             },
@@ -103,7 +103,7 @@ const FoodMenu = () => {
                 Breakfast: "Uthappam",
                 Lunch: {
                     Main: "Rice, Dal, Ladies Finger Fry",
-                   Curry: "Aloo Kurma, Brinjal Curry, Mixed Vegetable Curry",
+                    Curry: "Aloo Kurma, Brinjal Curry, Mixed Vegetable Curry",
                     Sambar: "Drumstick Sambar"
                 },
                 Snacks: {
@@ -121,7 +121,7 @@ const FoodMenu = () => {
                 Lunch: {
                     Main: "Rice, Dal, Sambar",
                     Curry: "Paneer Tikka Masala, Aloo Gobi, Bhindi Fry",
-                  Sambar: "Vegetable Sambar"
+                    Sambar: "Vegetable Sambar"
                 },
                 Snacks: {
                     Item: "Bhel Puri",
@@ -129,7 +129,7 @@ const FoodMenu = () => {
                 },
                 Dinner: {
                     Main: "Veg Fried Rice, Egg Fried Rice",
-            Curry: "Masala",
+                    Curry: "Masala",
                     Pickle: "Mango Pickle "
                 }
             },
@@ -138,7 +138,7 @@ const FoodMenu = () => {
                 Lunch: {
                     Main: "Rice, Dal, Rasam",
                     Curry: "Cabbage Fry, Carrot Fry, Beetroot Fry",
-                   Sambar: "Drumstick Sambar"
+                    Sambar: "Drumstick Sambar"
                 },
                 Snacks: {
                     Item: "Banana Bajji",
@@ -147,7 +147,7 @@ const FoodMenu = () => {
                 Dinner: {
                     Main: "Rice",
                     Curry: "Gongura Chicken, Palak Paneer, Dal Tadka",
-            Pickle: "Tomato Pickle"
+                    Pickle: "Tomato Pickle"
                 }
             },
             Sunday: {
@@ -155,16 +155,16 @@ const FoodMenu = () => {
                 Lunch: {
                     Main: "Rice, Dal, Rasam",
                     Curry: "Mango Pickle, Garlic Pickle, Tomato Pickle",
-                  Sambar: "Vegetable Sambar"
-        },
-                    Snacks: {
-                        Item: "Pani Puri",
-                        Beverage: "Tea, Coffee"
-                    },
+                    Sambar: "Vegetable Sambar"
+                },
+                Snacks: {
+                    Item: "Pani Puri",
+                    Beverage: "Tea, Coffee"
+                },
                 Dinner: {
                     Main: "Rice, Sambar",
                     Curry: " Chicken Curry, Paneer Curry",
-                  Pickle: " Amla Pickle"
+                    Pickle: " Amla Pickle"
                 }
             }
         });
@@ -211,7 +211,7 @@ const FoodMenu = () => {
                             padding: '2rem',
                             boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)',
                             margin: '15px auto',
-                            backgroundColor:'white'
+                            backgroundColor: 'white'
                         }}>
                             <h3 style={{ fontSize: '1.8rem', fontWeight: 'bold', textAlign: 'center', marginBottom: '1.5rem' }}>
                                 {currentDay}'s Menu
@@ -353,7 +353,55 @@ const FoodMenu = () => {
                     </form>
                 </div>
             </div>}
+            {userType === 'admin' && (
+                <div className='col'>
+                    <div style={{
+                        padding: '2rem',
+                        width: '95%',
+                        margin: '15px auto',
+                        background: '#ffffff',
+                        borderRadius: '1rem',
+                        boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)'
+                    }}>
+                        <h2 style={{
+                            fontSize: '1.8rem',
+                            fontWeight: 'bold',
+                            textAlign: 'center',
+                            marginBottom: '1.5rem'
+                        }}>Feedback Table</h2>
 
+                        <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'center' }}>
+                            <thead>
+                                <tr style={{ backgroundColor: '#f0f0f0' }}>
+                                    <th style={{ padding: '10px', border: '1px solid #ddd' }}>Taste</th>
+                                    <th style={{ padding: '10px', border: '1px solid #ddd' }}>Quality</th>
+                                    <th style={{ padding: '10px', border: '1px solid #ddd' }}>Hygiene</th>
+                                    <th style={{ padding: '10px', border: '1px solid #ddd' }}>Services</th>
+                                    <th style={{ padding: '10px', border: '1px solid #ddd' }}>Suggestion</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {feedbackData.map((item, index) => (
+                                    <tr key={index}>
+                                        <td style={{ padding: '10px', border: '1px solid #ddd' }}>{item.taste}</td>
+                                        <td style={{ padding: '10px', border: '1px solid #ddd' }}>{item.quality}</td>
+                                        <td style={{ padding: '10px', border: '1px solid #ddd' }}>{item.hygiene}</td>
+                                        <td style={{ padding: '10px', border: '1px solid #ddd' }}>{item.services}</td>
+                                        <td style={{ padding: '10px', border: '1px solid #ddd', textAlign: 'left' }}>{item.suggestions}</td>
+                                    </tr>
+                                ))}
+                                <tr style={{ backgroundColor: '#e0e0e0', fontWeight: 'bold' }}>
+                                    <td style={{ padding: '10px', border: '1px solid #ddd' }}>{averages.taste}</td>
+                                    <td style={{ padding: '10px', border: '1px solid #ddd' }}>{averages.quality}</td>
+                                    <td style={{ padding: '10px', border: '1px solid #ddd' }}>{averages.hygiene}</td>
+                                    <td style={{ padding: '10px', border: '1px solid #ddd' }}>{averages.services}</td>
+                                    <td style={{ padding: '10px', border: '1px solid #ddd' }}>-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

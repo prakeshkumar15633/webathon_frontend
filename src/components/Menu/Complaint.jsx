@@ -48,7 +48,7 @@ const Complaint = () => {
             async function fetchComplaints() {
                 setLoading(true);
                 try {
-                    let response = await axios.get('http://localhost:4000/admin-api/complaints');
+                    let response = await axios.get('https://shms-backend-zvyd.onrender.com/admin-api/complaints');
                     setComplaints(response.data.complaints);
                     console.log(response.data.complaints);  // Ensure the data fetched is as expected
                 } catch (err) {
